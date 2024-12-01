@@ -1,0 +1,27 @@
+<?php
+
+
+class AtualizarVisitanteAdm
+{
+    public function retornar()
+    {
+
+
+        $atualizar = (new VisitantesBanco())->atualizarVisitante($_POST['idVisitante'], $_POST['nomeVisitante'],$_POST['descricaoVisitante'],$_POST['idMoradorVisitante']);
+
+
+
+
+        if (empty($atualizar)) {
+            die("Não foi possível atualizar o visitante");
+        }
+
+        $mensagem = '
+    <div class="notification is-success">
+        <button class="delete"></button>
+           Visitante atualizado!
+    </div>
+    <a href="./index.php?menu=visitantesAdm" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
+        echo $mensagem;
+        }
+}
